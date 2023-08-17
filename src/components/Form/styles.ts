@@ -56,6 +56,7 @@ export const InputWrapper = styled.div`
   }
 
   input {
+    width: 100%;
     font-size: 0.875rem;
     font-family: 'Roboto', sans-serif;
     color: ${(props) => props.theme.grayDark};
@@ -66,6 +67,9 @@ export const InputWrapper = styled.div`
 
 export const WrapperButton = styled.div`
   margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   button {
     width: 100%;
@@ -83,6 +87,9 @@ export const WrapperButton = styled.div`
 
     :hover {
       background: ${(props) => props.theme.purpleDark};
+    }
+    svg {
+      background: transparent;
     }
   }
 `
