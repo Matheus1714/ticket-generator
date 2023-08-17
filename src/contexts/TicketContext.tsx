@@ -37,15 +37,17 @@ export function TicketContextProvider({
   const [success, setSuccess] = useState<boolean>(false)
 
   function handleDowloadTicket() {
-    const ticketHTML = document.querySelector('#capture')
-    html2canvas(ticketHTML).then((canvas) => {
-      document.body.appendChild(canvas)
-      const imgData = canvas.toDataURL('image/png')
-      const a = document.createElement('a')
-      a.href = imgData
-      a.download = 'ticket-ia-para-devs.png'
-      a.click()
-    })
+    const ticketHTML: HTMLElement | null = document.querySelector('#capture')
+    if (ticketHTML) {
+      html2canvas(ticketHTML).then((canvas) => {
+        document.body.appendChild(canvas)
+        const imgData = canvas.toDataURL('image/png')
+        const a = document.createElement('a')
+        a.href = imgData
+        a.download = 'ticket-ia-para-devs.png'
+        a.click()
+      })
+    }
   }
 
   function handleInputUsername(username: string) {
