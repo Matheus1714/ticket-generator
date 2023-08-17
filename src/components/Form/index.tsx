@@ -1,24 +1,35 @@
-import { FormWrapper, TitleWrapper, InputWrapper } from './styles'
+import * as S from './styles'
+import githubImg from '../../assets/github.svg'
 
 export function Form() {
   return (
-    <FormWrapper>
+    <S.FormWrapper>
       <form action="">
-        <TitleWrapper>
+        <S.TitleWrapper>
           <h1>GERE SEU TICKET</h1>
           <h1>E COMPARTILHE</h1>
           <h1>COM O MUNDO</h1>
-        </TitleWrapper>
+        </S.TitleWrapper>
 
-        <label>DIGITE SEU USUÁRIO DO GITHUB</label>
+        <S.LabelMessage>
+          <label>DIGITE SEU USUÁRIO DO GITHUB</label>
+        </S.LabelMessage>
 
-        <InputWrapper>
-          Github
-          <input placeholder="Nome do usuário" type="text" />
-        </InputWrapper>
+        <S.InputWrapper>
+          <img
+            src={githubImg}
+            alt="Logo do github ao lado do campo de inserção do nome do usuário"
+          />
+          <input
+            placeholder="Nome do usuário"
+            type="Campo para inserção do nome do usuário do github"
+          />
+        </S.InputWrapper>
 
-        <button type="submit">GERAR MEU TICKET</button>
+        <S.WrapperButton>
+          <button type="submit">GERAR MEU TICKET</button>
+        </S.WrapperButton>
       </form>
-    </FormWrapper>
+    </S.FormWrapper>
   )
 }

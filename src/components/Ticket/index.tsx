@@ -1,9 +1,9 @@
-import { TicketWrapper } from './styles'
+import * as S from './styles'
 
 export function Ticket() {
   return (
-    <TicketWrapper>
+    <S.TicketWrapper>
       <h1>Ticket</h1>
-    </TicketWrapper>
+    </S.TicketWrapper>
   )
 }
