@@ -1,13 +1,11 @@
 import * as S from './styles'
 import IADevsImg from '../../assets/logo-ia-devs.svg'
 import barCodeImg from '../../assets/bar-code.svg'
-import { UserData } from '../../services/github-api'
+import { useContext } from 'react'
+import { TicketContext } from '../../contexts/TicketContext'
 
-interface TicketProps {
-  userData: UserData
-}
-
-export function Ticket({ userData }: TicketProps) {
+export function Ticket() {
+  const { userData } = useContext(TicketContext)
   return (
     <S.TicketWrapper id="capture">
       <img src={IADevsImg} alt="banner de IA para Devs dentro do ticket" />
