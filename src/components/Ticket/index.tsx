@@ -1,7 +1,6 @@
 import * as S from './styles'
 import IADevsImg from '../../assets/logo-ia-devs.svg'
 import barCodeImg from '../../assets/bar-code.svg'
-
 import { UserData } from '../../services/github-api'
 
 interface TicketProps {
@@ -10,7 +9,7 @@ interface TicketProps {
 
 export function Ticket({ userData }: TicketProps) {
   return (
-    <S.TicketWrapper>
+    <S.TicketWrapper id="capture">
       <img src={IADevsImg} alt="banner de IA para Devs dentro do ticket" />
       <S.UserCart>
         <S.UserInfo>

@@ -11,6 +11,7 @@ interface FormProps {
   success: boolean
   handleInputUsername: (username: string) => void
   handleForm: (event: FormEvent) => void
+  handleDowloadTicket: () => void
 }
 
 export function Form({
@@ -20,6 +21,7 @@ export function Form({
   success,
   handleInputUsername,
   handleForm,
+  handleDowloadTicket,
 }: FormProps) {
   return (
     <S.FormWrapper>
@@ -72,7 +74,7 @@ export function Form({
           </S.WrapperButton>
         ) : (
           <S.WrapperButton>
-            <button type="submit">Fazer Download</button>
+            <button onClick={handleDowloadTicket}>Fazer Download</button>
           </S.WrapperButton>
         )}
       </form>

@@ -1,9 +1,10 @@
+import { FormEvent, useState } from 'react'
+import userImg from '../../assets/user.svg'
 import { Form } from '../../components/Form'
 import { Ticket } from '../../components/Ticket'
+import { UserData, getUserInfo } from '../../services/github-api'
 import { Wrapper } from './styles'
-import { useState, FormEvent, useEffect } from 'react'
-import { getUserInfo, UserData } from '../../services/github-api'
-import userImg from '../../assets/user.svg'
+import html2canvas from 'html2canvas'
 
 const defaultUserData = {
   login: '',
@@ -18,6 +19,18 @@ export function Home() {
   const [loading, setLoading] = useState<boolean>(false)
   const [findedUser, setFindedUser] = useState<boolean>(true)
   const [success, setSuccess] = useState<boolean>(false)
+
+  function handleDowloadTicket() {
+    const ticketHTML = document.querySelector('#capture')
+    html2canvas(ticketHTML).then((canvas) => {
+      document.body.appendChild(canvas)
+      const imgData = canvas.toDataURL('image/png')
+      const a = document.createElement('a')
+      a.href = imgData
+      a.download = 'ticket-ia-para-devs.png'
+      a.click()
+    })
+  }
 
   function handleInputUsername(username: string) {
     setUsername(username)
@@ -42,11 +55,12 @@ export function Home() {
     <Wrapper>
       <Form
         username={username}
-        handleInputUsername={handleInputUsername}
-        handleForm={handleForm}
         loading={loading}
         findedUser={findedUser}
         success={success}
+        handleInputUsername={handleInputUsername}
+        handleForm={handleForm}
+        handleDowloadTicket={handleDowloadTicket}
       />
       <Ticket userData={userData} />
     </Wrapper>
