@@ -8,4 +8,8 @@ export const defaultTheme = {
 
   sucess: '#04D361',
   danger: '#FF8F8F',
+
+  degreeLight: '#DEE0FC',
+  degreeNormal: '#996DFF',
+  degreeDark: '#BC9FFF',
 }
