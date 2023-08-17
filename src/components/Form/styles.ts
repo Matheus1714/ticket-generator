@@ -39,17 +39,21 @@ export const TitleWrapper = styled.div`
   }
 `
 
-export const InputWrapper = styled.div`
+const BaseWrapperStatus = styled.div`
   width: 100%;
   height: 3.375rem;
-  background: ${(props) => props.theme.white};
+
   margin-top: 1rem;
+  margin-bottom: 0.25rem;
 
   display: flex;
   align-items: center;
   justify-content: flex-start;
-
   gap: 0.875rem;
+`
+
+export const InputWrapper = styled(BaseWrapperStatus)`
+  background: ${(props) => props.theme.white};
 
   img {
     margin-left: 0.875rem;
@@ -63,6 +67,26 @@ export const InputWrapper = styled.div`
     border-color: transparent;
     outline: none;
   }
+`
+
+export const WrapperSuccessMessage = styled(BaseWrapperStatus)`
+  background: transparent;
+
+  svg {
+    color: ${(props) => props.theme.sucess};
+  }
+  p {
+    font-family: 'Space Grotesk', sans-serif;
+    color: ${(props) => props.theme.grayLight};
+    font-size: 1.25rem;
+    text-transform: uppercase;
+  }
+`
+
+export const ErrorMessage = styled.span`
+  color: ${(props) => props.theme.danger};
+  font-size: 1rem;
+  font-family: 'Space Grotesk', sans-serif;
 `
 
 export const WrapperButton = styled.div`
@@ -85,11 +109,12 @@ export const WrapperButton = styled.div`
     color: ${(props) => props.theme.white};
     background: ${(props) => props.theme.purpleNormal};
 
-    :hover {
-      background: ${(props) => props.theme.purpleDark};
-    }
     svg {
       background: transparent;
     }
+  }
+
+  :hover {
+    background: ${(props) => props.theme.purpleDark};
   }
 `

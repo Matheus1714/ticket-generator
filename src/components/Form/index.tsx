@@ -2,10 +2,13 @@ import * as S from './styles'
 import githubImg from '../../assets/github.svg'
 import { FormEvent } from 'react'
 import LoadingIcons from 'react-loading-icons'
+import { CheckCircle } from '@phosphor-icons/react'
 
 interface FormProps {
   username: string
   loading: boolean
+  findedUser: boolean
+  success: boolean
   handleInputUsername: (username: string) => void
   handleForm: (event: FormEvent) => void
 }
@@ -13,6 +16,8 @@ interface FormProps {
 export function Form({
   username,
   loading,
+  findedUser,
+  success,
   handleInputUsername,
   handleForm,
 }: FormProps) {
@@ -29,28 +34,47 @@ export function Form({
           <label>DIGITE SEU USUÁRIO DO GITHUB</label>
         </S.LabelMessage>
 
-        <S.InputWrapper>
-          <img
-            src={githubImg}
-            alt="Logo do github ao lado do campo de inserção do nome do usuário"
-          />
-          <input
-            value={username}
-            onChange={(e) => handleInputUsername(e.target.value)}
-            placeholder="Nome do usuário"
-            type="Campo para inserção do nome do usuário do github"
-          />
-        </S.InputWrapper>
+        {!success ? (
+          <S.InputWrapper>
+            <a href="http://github.com" target="_blank" rel="noreferrer">
+              <img
+                src={githubImg}
+                alt="Logo do github ao lado do campo de inserção do nome do usuário"
+              />
+            </a>
+            <input
+              value={username}
+              onChange={(e) => handleInputUsername(e.target.value)}
+              placeholder="Nome do usuário"
+              type="Campo para inserção do nome do usuário do github"
+            />
+          </S.InputWrapper>
+        ) : (
+          <S.WrapperSuccessMessage>
+            <CheckCircle size={32} />
+            <p>Ticket gerado com sucesso</p>
+          </S.WrapperSuccessMessage>
+        )}
 
-        <S.WrapperButton>
-          {loading ? (
-            <button disabled>
-              <LoadingIcons.TailSpin fontSize={24} />
-            </button>
-          ) : (
-            <button type="submit">GERAR MEU TICKET</button>
-          )}
-        </S.WrapperButton>
+        <S.ErrorMessage hidden={findedUser}>
+          Usuário inválido. Verifique e tente novamente.
+        </S.ErrorMessage>
+
+        {!success ? (
+          <S.WrapperButton>
+            {loading ? (
+              <button disabled>
+                <LoadingIcons.TailSpin fontSize={24} />
+              </button>
+            ) : (
+              <button type="submit">GERAR MEU TICKET</button>
+            )}
+          </S.WrapperButton>
+        ) : (
+          <S.WrapperButton>
+            <button type="submit">Fazer Download</button>
+          </S.WrapperButton>
+        )}
       </form>
     </S.FormWrapper>
   )

@@ -1,7 +1,7 @@
 import { Form } from '../../components/Form'
 import { Ticket } from '../../components/Ticket'
 import { Wrapper } from './styles'
-import { useState, FormEvent } from 'react'
+import { useState, FormEvent, useEffect } from 'react'
 import { getUserInfo, UserData } from '../../services/github-api'
 import userImg from '../../assets/user.svg'
 
@@ -16,6 +16,8 @@ export function Home() {
   const [username, setUsername] = useState('')
   const [userData, setUserData] = useState<UserData>(defaultUserData)
   const [loading, setLoading] = useState<boolean>(false)
+  const [findedUser, setFindedUser] = useState<boolean>(true)
+  const [success, setSuccess] = useState<boolean>(false)
 
   function handleInputUsername(username: string) {
     setUsername(username)
@@ -31,7 +33,9 @@ export function Home() {
         user.name = username
       }
       setUserData(user)
+      setSuccess(true)
     }
+    setFindedUser(!user.error)
   }
 
   return (
@@ -41,6 +45,8 @@ export function Home() {
         handleInputUsername={handleInputUsername}
         handleForm={handleForm}
         loading={loading}
+        findedUser={findedUser}
+        success={success}
       />
       <Ticket userData={userData} />
     </Wrapper>
