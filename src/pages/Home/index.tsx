@@ -4,7 +4,7 @@ import { Wrapper } from './styles'
 
 export function Home() {
   return (
-    <Wrapper>
+    <Wrapper id="container">
       <Form />
       <Ticket />
     </Wrapper>

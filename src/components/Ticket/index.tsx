@@ -8,7 +8,11 @@ export function Ticket() {
   const { userData } = useContext(TicketContext)
   return (
     <S.TicketWrapper id="capture">
-      <img src={IADevsImg} alt="banner de IA para Devs dentro do ticket" />
+      <img
+        id="banner-ticket"
+        src={IADevsImg}
+        alt="banner de IA para Devs dentro do ticket"
+      />
       <S.UserCart>
         <S.UserInfo>
           <img src={userData.avatar_url} alt="" />
@@ -28,7 +32,7 @@ export function Ticket() {
             <label>AO VIVO - 19H</label>
           </S.EventColInfo>
         </S.EventInfo>
-        <S.BarcodeWrapper>
+        <S.BarcodeWrapper id="barcode">
           <img src={barCodeImg} alt="" />
         </S.BarcodeWrapper>
       </S.UserCart>

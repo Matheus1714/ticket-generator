@@ -8,7 +8,7 @@ import { TicketContext } from '../../contexts/TicketContext'
 export function Form() {
   const { handleForm, findedUser } = useContext(TicketContext)
   return (
-    <S.FormWrapper>
+    <S.FormWrapper id="formTicket">
       <form onSubmit={handleForm}>
         <S.TitleWrapper>
           <h1>GERE SEU TICKET</h1>
